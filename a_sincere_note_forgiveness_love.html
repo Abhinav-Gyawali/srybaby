@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>A Sincere Note - Forgiveness & Love</title>
+    
+    <!-- Material Symbols -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-error-container": "#93000a",
+                    "inverse-surface": "#30312e",
+                    "surface-container-high": "#eae8e4",
+                    "surface-variant": "#e4e2de",
+                    "inverse-primary": "#e7bbc6",
+                    "on-background": "#1b1c1a",
+                    "background": "#fbf9f5",
+                    "surface": "#fbf9f5",
+                    "secondary-fixed-dim": "#ffb2bd",
+                    "on-surface": "#1b1c1a",
+                    "on-secondary": "#ffffff",
+                    "on-surface-variant": "#4f4446",
+                    "on-error": "#ffffff",
+                    "surface-container": "#efeeea",
+                    "on-tertiary-fixed-variant": "#444655",
+                    "outline": "#817476",
+                    "surface-bright": "#fbf9f5",
+                    "outline-variant": "#d3c3c5",
+                    "on-secondary-container": "#fffbff",
+                    "on-primary-fixed": "#2d141c",
+                    "tertiary": "#5c5d6e",
+                    "on-primary-fixed-variant": "#5e3e47",
+                    "on-secondary-fixed": "#400014",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary-container": "#5e6070",
+                    "secondary-container": "#e40d5d",
+                    "surface-tint": "#78555e",
+                    "surface-container-highest": "#e4e2de",
+                    "tertiary-container": "#dbdbef",
+                    "inverse-on-surface": "#f2f0ed",
+                    "on-primary-container": "#7a5761",
+                    "secondary": "#b80048",
+                    "surface-container-low": "#f5f3ef",
+                    "tertiary-fixed-dim": "#c5c5d8",
+                    "primary": "#78555e",
+                    "on-tertiary": "#ffffff",
+                    "error": "#ba1a1a",
+                    "primary-fixed-dim": "#e7bbc6",
+                    "tertiary-fixed": "#e1e1f5",
+                    "primary-container": "#ffd1dc",
+                    "error-container": "#ffdad6",
+                    "on-primary": "#ffffff",
+                    "surface-dim": "#dbdad6",
+                    "on-secondary-fixed-variant": "#900037",
+                    "on-tertiary-fixed": "#191b29",
+                    "primary-fixed": "#ffd9e2",
+                    "secondary-fixed": "#ffd9dd"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xl": "80px",
+                    "container-max": "600px",
+                    "sm": "12px",
+                    "xs": "4px",
+                    "lg": "48px",
+                    "gutter": "20px",
+                    "md": "24px",
+                    "base": "8px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Playfair Display"],
+                    "body-md": ["Plus Jakarta Sans"],
+                    "caption": ["Plus Jakarta Sans"],
+                    "headline-lg-mobile": ["Playfair Display"],
+                    "display": ["Playfair Display"],
+                    "headline-lg": ["Playfair Display"],
+                    "label-md": ["Plus Jakarta Sans"],
+                    "body-lg": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "headline-md": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "caption": ["12px", {"lineHeight": "1.4", "fontWeight": "500"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                    "display": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                    "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+
+    <style>
+        /* Shared and Screen-Specific Animations */
+        @keyframes float {
+            0% { transform: translateY(-50px) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+        }
+        .petal {
+            position: fixed;
+            top: -50px;
+            pointer-events: none;
+            z-index: 9999;
+        }
+        @keyframes breathing {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+        }
+        .breathe-effect {
+            animation: breathing 6s ease-in-out infinite;
+        }
+        .sparkle-btn::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%; width: 100%; height: 100%;
+            background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: all 0.6s;
+        }
+        .sparkle-btn:hover::before { left: 100%; }
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        .shimmer-bg {
+            background: linear-gradient(90deg, #b80048 25%, #e40d5d 50%, #b80048 75%);
+            background-size: 200% 100%;
+            animation: shimmer 3s infinite linear;
+        }
+        .card-reveal { animation: cardOpen 1.2s cubic-bezier(0.34, 1.56, 0.64, 1); }
+        @keyframes cardOpen {
+            0% { opacity: 0; transform: scale(0.9) translateY(20px); }
+            100% { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        @keyframes shimmer-text {
+            0% { text-shadow: 0 0 10px rgba(184, 0, 72, 0.2); filter: hue-rotate(0deg); }
+            50% { text-shadow: 0 0 30px rgba(184, 0, 72, 0.6), 0 0 50px rgba(120, 85, 94, 0.4); filter: hue-rotate(15deg); }
+            100% { text-shadow: 0 0 10px rgba(184, 0, 72, 0.2); filter: hue-rotate(0deg); }
+        }
+        .shimmer-effect { animation: shimmer-text 5s infinite alternate ease-in-out; }
+        @keyframes floatUp {
+            0% { transform: translateY(0) scale(1); opacity: 0; }
+            20% { opacity: 0.8; }
+            100% { transform: translateY(-400px) scale(1.5); opacity: 0; }
+        }
+        .heart-float { position: absolute; pointer-events: none; animation: floatUp 5s ease-out forwards; }
+        @keyframes popUp {
+            0% { transform: scale(0.5); opacity: 0; }
+            50% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .language-pop { animation: popUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+        @keyframes slideUpFade {
+            0% { transform: translateY(40px) rotate(-2deg); opacity: 0; }
+            100% { transform: translateY(0) rotate(-2deg); opacity: 1; }
+        }
+        .letter-slide-up { animation: slideUpFade 1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+        .heartbeat-animation { animation: heartbeat 3s ease-in-out infinite; }
+        .glow-radial {
+            background: radial-gradient(circle, rgba(228, 13, 93, 0.3) 0%, rgba(251, 249, 245, 0) 70%);
+        }
+        @keyframes pulse-glow {
+            0% { transform: scale(1); opacity: 0.2; }
+            50% { transform: scale(1.3); opacity: 0.4; }
+            100% { transform: scale(1); opacity: 0.2; }
+        }
+        .particle { pointer-events: none; position: absolute; z-index: 100; }
+        
+        body { min-height: 100dvh; }
+        #app-root { height: 100%; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md overflow-x-hidden selection:bg-primary-container selection:text-on-primary-container">
+    <div id="root"></div>
+
+    <!-- Library Dependencies -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/history@5/umd/history.development.js"></script>
+    <script src="https://unpkg.com/react-router@6.3.0/umd/react-router.development.js"></script>
+    <script src="https://unpkg.com/react-router-dom@6.3.0/umd/react-router-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <script type="text/babel">
+        const { useState, useEffect, useRef } = React;
+        const { createRoot } = ReactDOM;
+        const { MemoryRouter, Routes, Route, Link, useNavigate, useLocation } = ReactRouterDOM;
+
+        // --- Shared Components ---
+
+        const AppHeader = () => (
+            <header class="w-full top-0 bg-background flex justify-between items-center px-md py-sm max-w-container-max mx-auto z-40 relative">
+                <Link to="/" class="flex items-center gap-xs text-secondary transition-opacity hover:opacity-80 cursor-pointer active:scale-95 duration-200">
+                    <span class="material-symbols-outlined">mail</span>
+                    <span class="font-headline-md text-headline-md">A Sincere Note</span>
+                </Link>
+                <button class="text-secondary transition-opacity hover:opacity-80 active:scale-95 duration-200">
+                    <span class="material-symbols-outlined" style={{fontVariationSettings: "'FILL' 1"}}>favorite</span>
+                </button>
+            </header>
+        );
+
+        const BottomNav = () => null;
+
+        // --- Screens ---
+
+        // Screen 4 (ID: 9c18f280f38642999141f56521d993ab) - The Start (Envelope)
+        const StartEnvelopeScreen = () => {
+            const navigate = useNavigate();
+            const [isOpening, setIsOpening] = useState(false);
+
+            const handleOpen = () => {
+                setIsOpening(true);
+                setTimeout(() => {
+                    navigate('/apology');
+                }, 800);
+            };
+
+            return (
+                <div class="min-h-screen flex flex-col overflow-hidden select-none">
+                    <AppHeader />
+                    <main class="flex-grow flex flex-col items-center justify-center px-gutter relative">
+                        <div class="max-w-container-max w-full flex flex-col items-center gap-xl relative z-10">
+                            <div class={`perspective-lg cursor-pointer group flex flex-col items-center ${isOpening ? 'opening-animation' : ''}`} onClick={handleOpen}>
+                                <div class="envelope-container heartbeat-animation relative w-[280px] h-[180px] md:w-[360px] md:h-[230px] bg-surface-container-low rounded-base shadow-[0px_4px_30px_rgba(227,11,92,0.12)]">
+                                    <div class="absolute inset-0 bg-primary-container/20 rounded-base"></div>
+                                    <div class="absolute inset-0 overflow-hidden rounded-base bg-surface-container-lowest border border-outline-variant/30">
+                                        <svg class="absolute bottom-0 w-full h-full" fill="none" viewBox="0 0 360 230">
+                                            <path d="M0 230L180 115L360 230H0Z" fill="#FBF9F5" stroke="#D3C3C5" strokeWidth="1"></path>
+                                            <path d="M0 0L180 115L0 230V0Z" fill="#F5F3EF" stroke="#D3C3C5" strokeWidth="0.5"></path>
+                                            <path d="M360 0L180 115L360 230V0Z" fill="#F5F3EF" stroke="#D3C3C5" strokeWidth="0.5"></path>
+                                        </svg>
+                                    </div>
+                                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-30">
+                                        <div class="w-12 h-12 md:w-16 md:h-16 bg-secondary rounded-full flex items-center justify-center shadow-lg border-2 border-primary-container transition-transform group-hover:scale-110">
+                                            <span class="material-symbols-outlined text-on-secondary text-2xl md:text-3xl" style={{fontVariationSettings: "'FILL' 1"}}>favorite</span>
+                                        </div>
+                                    </div>
+                                    <div class="absolute top-0 left-0 w-full h-1/2 z-20 origin-top transition-transform group-active:rotate-x-12">
+                                        <svg class="w-full h-full drop-shadow-sm" fill="none" viewBox="0 0 360 115">
+                                            <path d="M0 0H360L180 115L0 0Z" fill="#EAE8E4" stroke="#D3C3C5" strokeWidth="1"></path>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class={`mt-lg flex flex-col items-center gap-base transition-opacity duration-300 ${isOpening ? 'opacity-0' : 'opacity-100'}`}>
+                                    <span class="font-label-md text-label-md text-secondary tracking-widest uppercase opacity-70">Tap to Open</span>
+                                    <div class="w-12 h-[2px] bg-secondary-fixed opacity-30"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </main>
+                    <BottomNav activeTab="home" />
+                </div>
+            );
+        };
+
+        // Screen 3 (ID: 7656ea00b0ee4833868d8a2671673ef9) - The Apology
+        const ApologyScreen = () => {
+            const navigate = useNavigate();
+            const [hearts, setHearts] = useState([]);
+
+            useEffect(() => {
+                const interval = setInterval(() => {
+                    const id = Date.now() + Math.random();
+                    setHearts(prev => [...prev, {
+                        id,
+                        left: Math.random() * 100,
+                        size: 12 + Math.random() * 24,
+                        duration: 4 + Math.random() * 4,
+                        fill: Math.random() > 0.5 ? 1 : 0
+                    }]);
+                    setTimeout(() => {
+                        setHearts(prev => prev.filter(h => h.id !== id));
+                    }, 8000);
+                }, 800);
+                return () => clearInterval(interval);
+            }, []);
+
+            return (
+                <div class="bg-background text-on-surface font-body-md overflow-hidden bg-cream-gradient min-h-screen">
+                    <AppHeader />
+                    <main class="relative flex flex-col items-center justify-center min-h-[calc(100vh-60px)] max-w-container-max mx-auto px-md">
+                        <div class="absolute inset-0 overflow-hidden pointer-events-none">
+                            {hearts.map(h => (
+                                <span key={h.id} class="material-symbols-outlined heart-float text-secondary" style={{
+                                    left: `${h.left}%`,
+                                    fontSize: `${h.size}px`,
+                                    animationDuration: `${h.duration}s`,
+                                    fontVariationSettings: `'FILL' ${h.fill}`,
+                                    bottom: '-50px'
+                                }}>favorite</span>
+                            ))}
+                        </div>
+                        <div class="relative w-full max-w-[400px] flex flex-col items-center">
+                            <div class="mb-lg animate-bounce duration-[3000ms]">
+                                <img alt="Sad cute character" class="w-24 h-24 drop-shadow-md" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnXMAfOw6s4JzzHBEgow92qqw6XcgM38KDZHK--fzeeRvv6FjEQaAnAVwKbgXu5hlpJSpFuXRjqr5FJrgoGT-Y3x8JIdu4hYjlJeMOIk-62ip0N9LcTClJiC-s54s-vM7PGa6sr5Ap5VEFuiT04L40ORjwOewnjgAsyQDDbJ9IRDf9sQ51pOVU1z2rBtvHi3-N4Mn_Q2zgbYbVM6kiFN3x4RwCpQSeL-PpREJjWA15iW-T6NnerBtI0wqj8V3u-HofNJ90m0VSYqVe"/>
+                            </div>
+                            <div class="relative w-full aspect-[4/3] bg-surface-container-lowest rounded-lg border border-primary-container shadow-sm p-lg flex flex-col items-center justify-center text-center overflow-visible">
+                                <div class="absolute -top-24 left-4 right-4 bg-white border border-outline-variant rounded-md shadow-xl p-lg transform -rotate-2 letter-slide-up">
+                                    <h1 class="font-display text-headline-lg-mobile md:text-display text-secondary mb-base text-fade-in">I'm so sorry...</h1>
+                                    <p class="font-body-md text-on-surface-variant text-fade-in leading-relaxed">
+                                        I am deeply sorry for what I said. It was a mistake, a moment of weakness, but please know it doesn't represent how much you mean to me. 
+                                        <br/><br/>
+                                        <span class="font-bold text-secondary italic">I won't ever repeat it.</span> 
+                                        <br/>
+                                        I would never want a small mistake to put a sadness in your face and that kind of hurt i dont want to give to you. You are my world, and my love for you is endless and pure.
+                                    </p>
+                                </div>
+                                <div class="mt-lg">
+                                    <span class="material-symbols-outlined text-[64px] text-primary-fixed-dim">drafts</span>
+                                </div>
+                            </div>
+                            <div class="mt-lg flex flex-wrap justify-center gap-sm">
+                                <span class="px-md py-xs bg-tertiary-fixed text-on-tertiary-fixed font-label-md rounded-full shadow-sm">Sincere</span>
+                                <span class="px-md py-xs bg-surface-container-high text-on-surface-variant font-label-md rounded-full">Poetic</span>
+                                <span class="px-md py-xs bg-surface-container-high text-on-surface-variant font-label-md rounded-full">Heartfelt</span>
+                            </div>
+                        </div>
+                        <div class="mt-xl pb-20 flex flex-col items-center">
+                            <button onClick={() => navigate('/ask-forgive')} class="pulse-btn pop-active group relative flex items-center justify-center w-24 h-24 bg-secondary rounded-full shadow-lg transition-all duration-300">
+                                <div class="absolute inset-0 flex items-center justify-center">
+                                    <span class="material-symbols-outlined text-[48px] text-white" style={{fontVariationSettings: "'FILL' 1"}}>favorite</span>
+                                </div>
+                            </button>
+                            <span class="mt-4 font-label-md text-secondary">Next</span>
+                        </div>
+                    </main>
+                </div>
+            );
+        };
+
+        // Screen 1 (ID: e726be5e1a264cceb40767200df7ec28) - The Proposal
+        const AskForgivenessScreen = () => {
+            const navigate = useNavigate();
+            const [maybePos, setMaybePos] = useState({ x: 0, y: 0 });
+            const [celebrating, setCelebrating] = useState(false);
+
+            const jumpAway = () => {
+                const range = 100;
+                setMaybePos({
+                    x: (Math.random() - 0.5) * range * 2,
+                    y: (Math.random() - 0.5) * range * 2
+                });
+            };
+
+            const handleYes = () => {
+                setCelebrating(true);
+                setTimeout(() => navigate('/tap-hearts'), 1500);
+            };
+
+            return (
+                <div class="bg-background text-on-background min-h-screen font-body-md overflow-x-hidden">
+                    <AppHeader />
+                    <main class="max-w-container-max mx-auto px-md pt-lg pb-xl flex flex-col items-center text-center relative">
+                        <div class="card-reveal w-full bg-surface-container-lowest border border-primary-container/30 rounded-lg p-md md:p-lg shadow-[0px_4px_20px_rgba(227,11,92,0.08)] relative z-20">
+                            <div class="relative w-full aspect-square max-w-[400px] mx-auto mb-lg overflow-hidden rounded-lg breathe-effect">
+                                <img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCk1RmLoyEQP5kXrWmkNGh4e7xpewypXbaF6HdhyDDPS1dlWkxGXEGD8yz79jr22Ajwl36laDfnUdfODCANd3MIKr7sQWjZ3LBFRQzmbfZuwX4W50uH_ZJxFRRmDwuSoCyMz9WUuTxeTK0M4RTYdFXkqrSWZGSqQ822w0Q_w4bwRjggX4wGfMhP5p4DjJ3XxxqMinD7oxL36zvFKaU__cgjZMKMWiB_4cYtqI6fw32s_DRkostM8HzCE56r9LYG2-qY0FyMImE6KbZF"/>
+                                <div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest/40 to-transparent"></div>
+                            </div>
+                            <div class="space-y-sm mb-xl">
+                                <h1 class="font-display text-display text-secondary leading-tight">Forgive me?</h1>
+                                <p class="font-body-lg text-body-lg text-on-surface-variant max-w-[420px] mx-auto">
+                                    I know I shouldn't have said that, and I'm truly sorry from the bottom of my soul. I love you more than words can express, and I promise to cherish us every single day.
+                                </p>
+                            </div>
+                            <div class="flex flex-col gap-md sm:flex-row sm:justify-center items-center">
+                                <button onClick={handleYes} class={`sparkle-btn ${celebrating ? 'bg-secondary' : 'shimmer-bg'} group relative overflow-hidden text-on-secondary px-lg py-md rounded-full font-label-md text-label-md shadow-[0px_4px_20px_rgba(227,11,92,0.2)] hover:scale-105 active:scale-95 transition-all duration-300 w-full sm:w-auto`}>
+                                    <span class="relative z-10 flex items-center justify-center gap-xs">
+                                        {celebrating ? 'Forever Yours' : 'Yes, always'}
+                                        <span class="material-symbols-outlined text-[18px]" style={{fontVariationSettings: "'FILL' 1"}}>auto_awesome</span>
+                                    </span>
+                                </button>
+                                <button 
+                                    onMouseOver={jumpAway}
+                                    onTouchStart={jumpAway}
+                                    style={{ transform: `translate(${maybePos.x}px, ${maybePos.y}px)` }}
+                                    class="bg-tertiary-fixed text-on-tertiary-fixed hover:bg-tertiary-fixed-dim px-lg py-md rounded-full font-label-md text-label-md transition-all duration-300 w-full sm:w-auto border border-tertiary-container active:scale-95"
+                                >
+                                    Thinking about it
+                                </button>
+                            </div>
+                            <div class="mt-xl flex flex-wrap justify-center gap-xs">
+                                <span class="px-md py-xs bg-tertiary-fixed text-tertiary font-caption text-caption rounded-full">Sincere</span>
+                                <span class="px-md py-xs bg-primary-container text-on-primary-container font-caption text-caption rounded-full">Poetic</span>
+                                <span class="px-md py-xs bg-secondary-fixed text-on-secondary-fixed-variant font-caption text-caption rounded-full">Pinky Promise</span>
+                            </div>
+                        </div>
+                    </main>
+                    <BottomNav activeTab="auto" />
+                </div>
+            );
+        };
+
+        // Screen 2 (ID: e0f7d9e5482748849015a8a5ffa67780) - Final Interactive Hearts
+        const HeartsFieldScreen = () => {
+            const [taps, setTaps] = useState(0);
+            const [activeHearts, setActiveHearts] = useState([]);
+            const [particles, setParticles] = useState([]);
+            const [selectedLang, setSelectedLang] = useState(null);
+            const TARGET_TAPS = 15;
+
+            const loveLanguages = [
+                { lang: "English", text: "I Love You" },
+                { lang: "Nepali", text: "म तिमीलाई माया गर्छु" },
+                { lang: "Hindi", text: "मैं तुमसे प्यार करता हूँ" },
+                { lang: "Spanish", text: "Te Amo" },
+                { lang: "German", text: "Ich liebe dich" },
+                { lang: "French", text: "Je t'aime" },
+                { lang: "Tharu", text: "मै तुहिन मन परैथु" },
+                { lang: "Italian", text: "Ti amo" },
+                { lang: "Portuguese", text: "Eu te amo" },
+                { lang: "Japanese", text: "Aishiteru" },
+                { lang: "Korean", text: "Saranghae" },
+                { lang: "Chinese", text: "Wo Ai Ni" },
+                { lang: "Russian", text: "Ya tebya lyublyu" },
+                { lang: "Arabic", text: "Ana behibek" },
+                { lang: "Greek", text: "S'agapo" },
+                { lang: "Dutch", text: "Ik hou van jou" },
+                { lang: "Turkish", text: "Seni seviyorum" },
+                { lang: "Thai", text: "Phom rak khun" },
+                { lang: "Vietnamese", text: "Anh yêu em" },
+                { lang: "Swahili", text: "Nakupenda" }
+            ];
+
+            useEffect(() => {
+                const initialHearts = Array.from({length: 20}).map((_, i) => ({
+                    id: i,
+                    x: 5 + Math.random() * 85,
+                    y: 10 + Math.random() * 75,
+                    size: 48 + Math.random() * 32, // Bigger hearts for easier touch
+                    delay: Math.random() * 8,
+                    opacity: 0.4 + Math.random() * 0.4,
+                    langIndex: i % loveLanguages.length
+                }));
+                setActiveHearts(initialHearts);
+            }, []);
+
+            const explodeHeart = (id, x, y, langIndex) => {
+                setActiveHearts(prev => prev.filter(h => h.id !== id));
+                setTaps(t => Math.min(t + 1, TARGET_TAPS));
+                setSelectedLang(loveLanguages[langIndex]);
+
+                // Create particles
+                const newParticles = Array.from({length: 12}).map((_, i) => ({
+                    id: Date.now() + i,
+                    x, y,
+                    tx: (Math.random() - 0.5) * 200,
+                    ty: (Math.random() - 0.5) * 200,
+                    color: ['#b80048', '#e40d5d', '#78555e', '#ffd1dc'][Math.floor(Math.random() * 4)]
+                }));
+                setParticles(prev => [...prev, ...newParticles]);
+                setTimeout(() => {
+                    setParticles(prev => prev.filter(p => !newParticles.find(np => np.id === p.id)));
+                }, 1000);
+            };
+
+            return (
+                <div class="bg-background text-on-surface font-body-md overflow-hidden min-h-screen flex flex-col">
+                    <AppHeader />
+                    <main class="flex-grow relative overflow-hidden flex items-center justify-center p-md">
+                        <div class="absolute inset-0 glow-radial pointer-events-none animate-[pulse-glow_10s_ease-in-out_infinite]"></div>
+                        
+                        <div class="absolute inset-0 z-40 pointer-events-none flex items-center justify-center">
+                            {selectedLang && (
+                                <div key={selectedLang.text} class="language-pop bg-white/90 backdrop-blur-md px-lg py-md rounded-lg shadow-xl border-2 border-secondary text-center pointer-events-auto">
+                                    <p class="text-caption text-secondary font-bold mb-xs uppercase tracking-widest">{selectedLang.lang}</p>
+                                    <h3 class="font-display text-headline-lg text-on-surface">{selectedLang.text}</h3>
+                                </div>
+                            )}
+                        </div>
+
+                        <div class="absolute inset-0 z-0">
+                            {activeHearts.map(h => (
+                                <div key={h.id} class="absolute float-animation" style={{left: `${h.x}%`, top: `${h.y}%`, animationDelay: `${h.delay}s`}}>
+                                    <button 
+                                        onClick={(e) => explodeHeart(h.id, e.clientX, e.clientY, h.langIndex)}
+                                        class="material-symbols-outlined text-secondary cursor-pointer hover:scale-125 transition-transform active:scale-150 duration-300 select-none touch-manipulation drop-shadow-sm" 
+                                        style={{fontSize: `${h.size}px`, opacity: h.opacity, fontVariationSettings: "'FILL' 1"}}>
+                                        favorite
+                                    </button>
+                                </div>
+                            ))}
+                            {particles.map(p => (
+                                <span key={p.id} class="material-symbols-outlined particle text-[14px]" style={{
+                                    color: p.color,
+                                    left: p.x,
+                                    top: p.y,
+                                    animation: 'fade-out-up 1s forwards'
+                                }}>sparkles</span>
+                            ))}
+                        </div>
+
+                        <div class="relative z-10 max-w-container-max w-full flex flex-col items-center text-center space-y-xl pointer-events-none">
+                            <div class="space-y-md pointer-events-auto">
+                                <h2 class="font-display text-display text-secondary leading-tight shimmer-effect">
+                                    I Love You
+                                </h2>
+                                <div class="relative min-h-[40px]">
+                                    {taps < TARGET_TAPS ? (
+                                        <div class="inline-flex items-center gap-base px-md py-xs bg-tertiary-container rounded-full shadow-[0px_4px_20px_rgba(227,11,92,0.08)]">
+                                            <span class="material-symbols-outlined text-tertiary text-[18px]">touch_app</span>
+                                            <span class="font-label-md text-label-md text-tertiary">Tap the hearts ({taps}/{TARGET_TAPS})</span>
+                                        </div>
+                                    ) : (
+                                        <div class="inline-flex items-center justify-center gap-base font-label-md text-label-md text-secondary-container bg-secondary px-md py-xs rounded-full shadow-lg">
+                                            Something special awaits... <span class="material-symbols-outlined text-[14px] align-middle">arrow_forward</span>
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
+
+                            <div class="bg-surface-container-lowest p-base rounded-lg shadow-[0px_4px_20px_rgba(227,11,92,0.08)] border border-outline-variant relative overflow-hidden group max-w-[320px] pointer-events-auto">
+                                <img class="w-full h-64 object-cover rounded" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_HGzuFdtrQSaoz9BwDI7D_-uveP8MEySAQlRsGtDiWe-zcdCofSsHTO-dFMqVYkDgw7GmrmFbrGuwWCR8qRpuFgmQ1AFDKwsjeWGPp7pRJKjeFsMIYaJnrpNVw7CuSro5A0u8W24IAptztpZuxipinr2o_zLxhRptGSQgC0pSkz2qAG7KJM_mZvjhR1l5Im59-Ya9RHljLoAB65RnfYdhjmdq4RUYfJq0XaNWJXlr15pf6ktMI5ych4VpmPVEkxChUUb_FeIbDMPh"/>
+                            </div>
+
+                            {taps >= TARGET_TAPS && (
+                                <div class="w-full max-w-md bg-white/80 backdrop-blur-sm rounded-lg p-md mt-lg space-y-sm max-h-[300px] overflow-y-auto border-2 border-secondary/20 shadow-xl animate-fade-in pointer-events-auto">
+                                    <h3 class="font-headline-md text-secondary mb-md">In every language...</h3>
+                                    <div class="grid grid-cols-1 gap-xs text-left">
+                                        {loveLanguages.map((item, idx) => (
+                                            <div key={idx} class="flex justify-between border-b border-outline-variant/30 py-xs items-baseline">
+                                                <span class="text-caption font-bold text-primary mr-md shrink-0">{item.lang}:</span>
+                                                <span class="text-body-md text-on-surface font-semibold text-right">{item.text}</span>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
+                        </div>
+                    </main>
+                    <BottomNav activeTab="loyalty" />
+                </div>
+            );
+        };
+
+        // --- Main App ---
+
+        const App = () => {
+            // Ambient Petal System
+            useEffect(() => {
+                const interval = setInterval(() => {
+                    const petal = document.createElement('div');
+                    petal.classList.add('petal');
+                    const isHeart = Math.random() > 0.4;
+                    
+                    // Scattered unevenly by varying speed, size, and rotation more aggressively
+                    const sizeVal = Math.random() * 20 + 10;
+                    const randomRotation = Math.floor(Math.random() * 360);
+                    const opacityVal = 0.4 + Math.random() * 0.5; // Increased visibility
+
+                    if (isHeart) {
+                        petal.innerHTML = `<span class="material-symbols-outlined text-secondary" style="font-size: ${sizeVal}px; opacity: ${opacityVal}; font-variation-settings: 'FILL' 1; transform: rotate(${randomRotation}deg)">favorite</span>`;
+                    } else {
+                        const size = sizeVal / 1.5 + 'px';
+                        Object.assign(petal.style, {
+                            width: size, height: size,
+                            backgroundColor: Math.random() > 0.5 ? '#ffb2bd' : '#e7bbc6',
+                            borderRadius: '50% 0 50% 50%',
+                            opacity: opacityVal,
+                            transform: `rotate(${randomRotation}deg)`
+                        });
+                    }
+                    
+                    // Scattered everywhere: randomized starting heights and positions
+                    petal.style.left = Math.random() * 100 + 'vw';
+                    const startDelay = Math.random() * -10; // Negative delay to start mid-screen
+                    
+                    // Uneven falling speeds
+                    const duration = 3 + Math.random() * 7;
+                    petal.style.animation = `float ${duration}s linear infinite`;
+                    petal.style.animationDelay = `${startDelay}s`;
+                    
+                    document.body.appendChild(petal);
+                    // Since it's now infinite/scattered, we'll clean up old ones if there's too many
+                    const allPetals = document.querySelectorAll('.petal');
+                    if (allPetals.length > 100) allPetals[0].remove();
+                }, 150); // High frequency for "scattered everywhere" effect
+                return () => clearInterval(interval);
+            }, []);
+
+            return (
+                <MemoryRouter>
+                    <Routes>
+                        <Route path="/" element={<StartEnvelopeScreen />} />
+                        <Route path="/envelope" element={<StartEnvelopeScreen />} />
+                        <Route path="/apology" element={<ApologyScreen />} />
+                        <Route path="/ask-forgive" element={<AskForgivenessScreen />} />
+                        <Route path="/tap-hearts" element={<HeartsFieldScreen />} />
+                    </Routes>
+                </MemoryRouter>
+            );
+        };
+
+        const root = createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
